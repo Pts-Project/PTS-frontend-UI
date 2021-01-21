@@ -4,8 +4,8 @@ import { Container, Row, Col } from 'react-grid-system';
 
 
 
-const description = "We help our members succeed by providing mentorships. \n Patform is here to help you get industry ready!";
-const title = "";
+const description = "We help our members succeed by providing mentorships. \n Patform is here to help you get industry ready, via student engaged skill development along with team management.";
+const title = "Platform Techs";
 const columns = [
     {
         title: "links",
