@@ -1,5 +1,5 @@
 import './events.css'
-import React, { Component, useEffect, CSSProperties } from 'react'
+import React, { Component, useEffect } from 'react'
 import { Container, Row, Col } from 'react-grid-system';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
@@ -38,9 +38,9 @@ class Events extends Component {
                 this.state.photos.map(photo =>
                     links.push(photo.url)
                 )
-                let ids = []
+                let indexes = []
                 this.state.photos.map(photo =>
-                    ids.push(photo.id)
+                    indexes.push(photo.indexnumber)
                 )
                 let titles = []
                 this.state.photos.map(photo =>
@@ -48,7 +48,7 @@ class Events extends Component {
                 )
                 this.setState({
                     links,
-                    ids,
+                    indexes,
                     titles,
                     dataisLoaded: true,
                 })
@@ -70,10 +70,10 @@ class Events extends Component {
                                 <Col md={2} sm={0} > <hr className="hr-19"></hr></Col>
                                 <Col md={8} >
                                     <Carousel>
-                                        {this.state.ids.map((id) =>
+                                        {this.state.ids.map((index) =>
                                             <div>
-                                                <img src={this.state.links[id]} fluid />
-                                                <p className="legend"> {id} {this.state.titles[id]}</p>
+                                                <img src={this.state.links[index]} fluid />
+                                                <p className="legend"> {index} {this.state.titles[index]}</p>
                                             </div>
                                         )}
                                     </Carousel>
