@@ -11,7 +11,7 @@ const about = () => {
 
 
     return (
-        <div className="about" id="about">
+        <div className="about">
             <div className="aboutContent">
                 <Container fluid>
                     <Row>

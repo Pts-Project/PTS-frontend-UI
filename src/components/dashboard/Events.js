@@ -1,5 +1,5 @@
 import './events.css'
-import React, { Component, useEffect } from 'react'
+import React, { Component, useEffect, CSSProperties } from 'react'
 import { Container, Row, Col } from 'react-grid-system';
 import axios from 'axios';
 import { Link } from 'react-router-dom'
@@ -32,15 +32,16 @@ class Events extends Component {
     fetchImages = async () => {
         await axios.get('https://jsonplaceholder.typicode.com/photos/')
             .then(res => {
+                localStorage.setItem("test","a")
                 console.log("fetched data");
                 this.setState({ photos: res.data });
                 let links = []
                 this.state.photos.map(photo =>
                     links.push(photo.url)
                 )
-                let indexes = []
+                let ids = []
                 this.state.photos.map(photo =>
-                    indexes.push(photo.indexnumber)
+                    ids.push(photo.id)
                 )
                 let titles = []
                 this.state.photos.map(photo =>
@@ -48,7 +49,7 @@ class Events extends Component {
                 )
                 this.setState({
                     links,
-                    indexes,
+                    ids,
                     titles,
                     dataisLoaded: true,
                 })
@@ -70,10 +71,10 @@ class Events extends Component {
                                 <Col md={2} sm={0} > <hr className="hr-19"></hr></Col>
                                 <Col md={8} >
                                     <Carousel>
-                                        {this.state.ids.map((index) =>
+                                        {this.state.ids.map((id) =>
                                             <div>
-                                                <img src={this.state.links[index]} fluid />
-                                                <p className="legend"> {index} {this.state.titles[index]}</p>
+                                                <img src={this.state.links[id]} fluid />
+                                                <p className="legend"> {id} {this.state.titles[id]}</p>
                                             </div>
                                         )}
                                     </Carousel>
